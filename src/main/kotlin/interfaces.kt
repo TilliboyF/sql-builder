@@ -1,34 +1,19 @@
 package com.github.TilliboyF
 
 interface SelectStep {
-    fun columns(vararg columns: String): FromStep
-    fun allColumns(): FromStep
+    fun columns(column: String, vararg columns: String): FromStep
+    fun all(): FromStep
 }
 
-interface FromStep {
+interface FromStep: BuildAble {
     fun from(table: String): WhereStep
 }
 
-interface WhereStep {
-    fun where(condition: String): OrderByStep
-    fun noWhere(): OrderByStep
+interface WhereStep : BuildAble {
+    fun where(condition: Condition ,vararg conditions: Condition): BuildAble
 }
 
-interface OrderByStep {
-    fun orderBy(vararg columns: String): LimitStep
-    fun noOrderBy(): LimitStep
-}
-
-interface LimitStep {
-    fun limit(maxRows: Int): OffsetStep
-    fun noLimit(): OffsetStep
-}
-
-interface OffsetStep {
-    fun offset(numRows: Int): BuildStep
-    fun noOffset(): BuildStep
-}
-
-interface BuildStep {
+interface BuildAble {
     fun build(): String
 }
+
