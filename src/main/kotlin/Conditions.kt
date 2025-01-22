@@ -11,7 +11,7 @@ private class SmallerCondition(
     override fun toSql(): String = "$column < $value"
 }
 
-public fun smaller(column: String, value: Any): Condition{
+fun smaller(column: String, value: Any): Condition{
     return SmallerCondition(column, value)
 }
 
@@ -36,3 +36,4 @@ private class EqualCondition(
 fun equal(column: String, value: Any): Condition{
     return EqualCondition(column, value)
 }
+

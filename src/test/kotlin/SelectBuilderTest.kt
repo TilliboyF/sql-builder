@@ -4,13 +4,13 @@ import com.github.TilliboyF.smaller
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class SqlBuilderTest{
+class SelectBuilderTest{
 
     @Test
     fun testBasicSelect(){
         val query = "SELECT * FROM users"
         val createdQuery = Query
-            .Select()
+            .select()
             .all()
             .from("users")
             .build()
@@ -21,7 +21,7 @@ class SqlBuilderTest{
     fun testWhereSelect(){
         val query = "SELECT * FROM users WHERE age < 25 AND status = 'active'"
         val createdQuery = Query
-            .Select()
+            .select()
             .all()
             .from("users")
             .where(

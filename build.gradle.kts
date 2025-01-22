@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.tilliboyf"
-version = "1.0-SNAPSHOT"
+version = "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -23,6 +23,9 @@ publishing {
     publications{
         create<MavenPublication>("mavenJava"){
             from(components["java"])
+            groupId = "com.github.TilliboyF"
+            artifactId = "sql-builder"
+            version = "0.0.1-SNAPSHOT"
         }
     }
     repositories{
@@ -30,8 +33,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/TilliboyF/sql-builder")
             credentials{
-                //username = project.findProperty("gpr.user") as String ?: System.getenv("USERNAME")
-                //password = project.findProperty("gpr.token") as String ?: System.getenv("TOKEN")
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
             }
         }
     }

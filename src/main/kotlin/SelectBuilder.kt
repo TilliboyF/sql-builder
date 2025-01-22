@@ -1,8 +1,9 @@
 package com.github.TilliboyF
 
-class SqlBuilder(
+class SelectBuilder(
     private val query: MutableList<String>
-): SelectStep, FromStep, WhereStep{
+) : SelectStep, FromStep, WhereStep {
+
     override fun columns(column: String, vararg columns: String): FromStep{
         val allColumns = listOf(column) + columns
         allColumns.forEach {
@@ -32,6 +33,4 @@ class SqlBuilder(
     override fun build(): String{
         return query.joinToString(" ")
     }
-
-
 }

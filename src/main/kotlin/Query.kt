@@ -2,8 +2,14 @@ package com.github.TilliboyF
 
 class Query {
     companion object{
-        fun Select(): SelectStep{
-            return SqlBuilder(mutableListOf("SELECT"))
+        fun select(): SelectStep{
+            return SelectBuilder(mutableListOf("SELECT"))
         }
+
+        fun insert(): InsertStep{
+            return InsertBuilder(mutableListOf("INSERT INTO"))
+        }
+
+
     }
 }
