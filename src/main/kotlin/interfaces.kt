@@ -13,6 +13,8 @@ interface ColumnsStep: ValueStep{
     fun columns(column: String, vararg columns: String): ValueStep
 }
 
+
+
 interface ValueStep{
     fun values(row: SqlRow, vararg rows: SqlRow): BuildAble
 }
@@ -23,6 +25,8 @@ interface FromStep: BuildAble {
 
 interface WhereStep : BuildAble {
     fun where(condition: Condition ,vararg conditions: Condition): BuildAble
+    fun whereOr(condition1: Condition, condition2: Condition, vararg conditions: Condition): BuildAble
+    fun whereAnd(condition1: Condition, condition2: Condition, vararg conditions: Condition): BuildAble
 }
 
 interface BuildAble {
